@@ -1,0 +1,25 @@
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<title>Frappin</title>
+	<path
+		d="M16.5 9a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z"
+		stroke="currentColor"
+		stroke-width="1.7"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+	/>
+	<path
+		d="M6.15 14.05 3 21l6.95-3.15"
+		stroke="currentColor"
+		stroke-width="1.7"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+	/>
+	<path
+		d="M8.25 12V6h4.25M8.25 8.65h3.35"
+		stroke="currentColor"
+		stroke-width="1.8"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+	/>
+	<path d="M18.5 7.25H22M18.5 11.25H21M16.75 15.25H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+</svg>

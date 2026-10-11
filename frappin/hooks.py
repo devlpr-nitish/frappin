@@ -1,7 +1,7 @@
 app_name = "frappin"
 app_title = "Frappin"
 app_publisher = "Nitish"
-app_description = "Frappin A smart, user-specific clipboard manager for Frappe and "
+app_description = "Frappin a smart, user-specific clipboard manager for Frappe and ERPNext that lets you save, search, organize, and reuse copied content instantly."
 app_email = "devlprnitish@gmail.com"
 app_license = "mit"
 
@@ -24,13 +24,13 @@ app_license = "mit"
 # Includes in <head>
 # ------------------
 
-# include js, css files in header of desk.html
-# app_include_css = "/assets/frappin/css/frappin.css"
-# app_include_js = "/assets/frappin/js/frappin.js"
+# Mount the Vue widget on every Desk page.
+app_include_css = ["frappin_widget.bundle.css"]
+app_include_js = ["frappin_widget.bundle.js"]
 
-# include js, css files in header of web template
-# web_include_css = "/assets/frappin/css/frappin.css"
-# web_include_js = "/assets/frappin/js/frappin.js"
+# Mount the same Vue widget on website pages.
+web_include_css = ["frappin_widget.bundle.css"]
+web_include_js = ["frappin_widget.bundle.js"]
 
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "frappin/public/scss/website"
@@ -131,6 +131,16 @@ app_license = "mit"
 # 	"Event": "frappe.desk.doctype.event.event.has_permission",
 # }
 
+permission_query_conditions = {
+	"Frappin Clipboard Item": "frappin.frappin.doctype.frappin_clipboard_item.frappin_clipboard_item.get_permission_query_conditions",
+	"Frappin Collection": "frappin.frappin.doctype.frappin_collection.frappin_collection.get_permission_query_conditions",
+}
+
+has_permission = {
+	"Frappin Clipboard Item": "frappin.frappin.doctype.frappin_clipboard_item.frappin_clipboard_item.has_permission",
+	"Frappin Collection": "frappin.frappin.doctype.frappin_collection.frappin_collection.has_permission",
+}
+
 # DocType Class
 # ---------------
 # Override standard doctype classes
@@ -171,6 +181,10 @@ app_license = "mit"
 # 		"frappin.tasks.monthly"
 # 	],
 # }
+
+scheduler_events = {
+	"daily": ["frappin.tasks.delete_expired_clipboard_items"],
+}
 
 # Testing
 # -------
@@ -252,4 +266,3 @@ app_license = "mit"
 # ------------
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
-

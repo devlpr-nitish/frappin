@@ -1,6 +1,6 @@
 ### Frappin
 
-Frappin A smart, user-specific clipboard manager for Frappe and 
+Frappin a smart, user-specific clipboard manager for Frappe and ERPNext that lets you save, search, organize, and reuse copied content instantly.
 
 ### Installation
 

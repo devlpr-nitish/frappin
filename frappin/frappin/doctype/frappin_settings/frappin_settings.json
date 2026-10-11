@@ -1,0 +1,51 @@
+{
+ "actions": [],
+ "creation": "2026-10-12 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "disabled",
+  "retention_days"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "description": "Hide the Frappin widget and stop saving text copied inside Frappe pages.",
+   "fieldname": "disabled",
+   "fieldtype": "Check",
+   "label": "Disable"
+  },
+  {
+   "default": "2",
+   "description": "Automatically delete non-permanent clipboard items after this many days.",
+   "fieldname": "retention_days",
+   "fieldtype": "Int",
+   "label": "Delete Non-Permanent Items After (Days)",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-10-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Frappin",
+ "name": "Frappin Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
