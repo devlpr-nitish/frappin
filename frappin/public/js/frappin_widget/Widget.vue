@@ -156,7 +156,7 @@ function persistCopiedText(value) {
 
 	if (window.frappe?.call) {
 		frappe.call({
-			method: "frappin.api.save_clipboard_item",
+			method: "frappin.api.clipboard.save_clipboard_item",
 			args: { content },
 			silent: true,
 			callback: () => window.dispatchEvent(new CustomEvent("frappin:clipboard-saved")),
@@ -165,7 +165,7 @@ function persistCopiedText(value) {
 	}
 
 	const csrfToken = window.csrf_token || window.frappe?.csrf_token;
-	fetch("/api/method/frappin.api.save_clipboard_item", {
+	fetch("/api/method/frappin.api.clipboard.save_clipboard_item", {
 		method: "POST",
 		credentials: "same-origin",
 		headers: {

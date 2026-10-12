@@ -3,8 +3,9 @@ from frappe.model.document import Document
 
 
 class FrappinCollection(Document):
-	def before_insert(self):
-		self.owner_user = frappe.session.user
+	def before_validate(self):
+		if self.is_new():
+			self.owner_user = frappe.session.user
 
 	def validate(self):
 		if not self.is_new():

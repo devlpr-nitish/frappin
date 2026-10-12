@@ -13,7 +13,6 @@
   "content_hash",
   "pinned",
   "permanent",
-  "favorite",
   "collection",
   "tags",
   "source_doctype",
@@ -21,7 +20,9 @@
   "source_field",
   "expires_at",
   "last_used_at",
-  "visibility"
+  "visibility",
+  "shared_can_edit",
+  "shared_can_delete"
  ],
  "fields": [
   {
@@ -78,12 +79,6 @@
    "label": "Permanent"
   },
   {
-   "default": "0",
-   "fieldname": "favorite",
-   "fieldtype": "Check",
-   "label": "Favorite"
-  },
-  {
    "fieldname": "collection",
    "fieldtype": "Link",
    "label": "Collection",
@@ -129,6 +124,20 @@
    "label": "Visibility",
    "options": "private\nshared",
    "reqd": 1
+  },
+  {
+   "default": "0",
+   "description": "Allow recipients to edit this shared item.",
+   "fieldname": "shared_can_edit",
+   "fieldtype": "Check",
+   "label": "Shared Users Can Edit"
+  },
+  {
+   "default": "0",
+   "description": "Allow recipients to delete this shared item.",
+   "fieldname": "shared_can_delete",
+   "fieldtype": "Check",
+   "label": "Shared Users Can Delete"
   }
  ],
  "index_web_pages_for_search": 0,

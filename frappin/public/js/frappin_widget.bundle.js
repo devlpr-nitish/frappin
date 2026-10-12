@@ -14,7 +14,7 @@ import Widget from "./frappin_widget/Widget.vue";
 		window.__frappinWidgetBooting = true;
 
 		try {
-			const response = await fetch("/api/method/frappin.api.get_widget_settings", {
+			const response = await fetch("/api/method/frappin.api.clipboard.get_widget_settings", {
 				headers: { Accept: "application/json" },
 				credentials: "same-origin",
 			});

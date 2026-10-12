@@ -166,24 +166,24 @@ has_permission = {
 
 # scheduler_events = {
 # 	"all": [
-# 		"frappin.tasks.all"
+# 		"frappin.jobs.all"
 # 	],
 # 	"daily": [
-# 		"frappin.tasks.daily"
+# 		"frappin.jobs.daily"
 # 	],
 # 	"hourly": [
-# 		"frappin.tasks.hourly"
+# 		"frappin.jobs.hourly"
 # 	],
 # 	"weekly": [
-# 		"frappin.tasks.weekly"
+# 		"frappin.jobs.weekly"
 # 	],
 # 	"monthly": [
-# 		"frappin.tasks.monthly"
+# 		"frappin.jobs.monthly"
 # 	],
 # }
 
 scheduler_events = {
-	"daily": ["frappin.tasks.delete_expired_clipboard_items"],
+	"daily": ["frappin.jobs.cleanup.delete_expired_clipboard_items"],
 }
 
 # Testing
