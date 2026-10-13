@@ -208,6 +208,34 @@ def get_collections():
 
 
 @frappe.whitelist()
+def create_collection(title):
+	_require_user()
+	title = (title or "").strip()
+	if not title:
+		frappe.throw("Collection name is required.")
+	if len(title) > 140:
+		frappe.throw("Collection name cannot exceed 140 characters.")
+
+	existing = frappe.db.get_value(
+		"Frappin Collection",
+		{"owner_user": frappe.session.user, "title": title},
+		"name",
+	)
+	if existing:
+		return {"name": existing, "title": title, "created": False}
+
+	doc = frappe.get_doc(
+		{
+			"doctype": "Frappin Collection",
+			"title": title,
+			"owner_user": frappe.session.user,
+		}
+	)
+	doc.insert(ignore_permissions=True)
+	return {"name": doc.name, "title": doc.title, "created": True}
+
+
+@frappe.whitelist()
 def get_template_doctypes(search=None):
 	_require_user()
 	filters = {"istable": 0}

@@ -717,6 +717,70 @@
 	color: var(--frappin-bg);
 }
 
+.frappin-filters .frappin-add-collection {
+	border: 1px dashed var(--frappin-border);
+	background: transparent;
+	color: var(--frappin-muted);
+}
+
+.frappin-filters .frappin-add-collection:hover {
+	background: var(--frappin-soft);
+	color: var(--frappin-text);
+}
+
+.frappin-collection-create {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.2rem;
+	min-width: 12rem;
+	padding: 0.18rem 0.25rem 0.18rem 0.55rem;
+	border: 1px solid var(--frappin-border);
+	border-radius: 999px;
+	background: var(--frappin-bg);
+}
+
+.frappin-collection-create input {
+	min-width: 0;
+	width: 7.5rem;
+	flex: 1;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	background: transparent;
+	color: var(--frappin-text);
+	font: inherit;
+	font-size: 0.78rem;
+}
+
+.frappin-filters .frappin-collection-create button {
+	display: grid;
+	place-items: center;
+	width: 1.55rem;
+	height: 1.55rem;
+	padding: 0;
+	background: transparent;
+}
+
+.frappin-filters .frappin-collection-create button:hover {
+	background: var(--frappin-soft);
+	color: inherit;
+}
+
+.frappin-collection-create button:disabled {
+	opacity: 0.45;
+	cursor: not-allowed;
+}
+
+.frappin-collection-create svg {
+	width: 0.85rem;
+	height: 0.85rem;
+	fill: none;
+	stroke: var(--frappin-muted);
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 2;
+}
+
 .frappin-panel__content {
 	flex: 1;
 	min-height: 0;

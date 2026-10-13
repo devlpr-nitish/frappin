@@ -266,6 +266,32 @@
 			>
 				{{ filter.label }}
 			</button>
+			<button
+				v-if="!addingCollection"
+				type="button"
+				class="frappin-add-collection"
+				@click="openCollectionCreate"
+			>
+				<span aria-hidden="true">+</span> Collection
+			</button>
+			<form v-else class="frappin-collection-create" @submit.prevent="createCollection">
+				<input
+					ref="collectionInput"
+					v-model.trim="newCollectionTitle"
+					type="text"
+					maxlength="140"
+					placeholder="Collection name"
+					aria-label="Collection name"
+					required
+					@keydown.esc.prevent="closeCollectionCreate"
+				/>
+				<button type="submit" :disabled="savingCollection || !newCollectionTitle" aria-label="Save collection">
+					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6" /></svg>
+				</button>
+				<button type="button" :disabled="savingCollection" aria-label="Cancel" @click="closeCollectionCreate">
+					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg>
+				</button>
+			</form>
 		</nav>
 
 		<div
@@ -411,6 +437,10 @@ const hasMore = ref(true);
 const nextStart = ref(0);
 const items = ref([]);
 const collections = ref([]);
+const addingCollection = ref(false);
+const savingCollection = ref(false);
+const newCollectionTitle = ref("");
+const collectionInput = ref(null);
 const creating = ref(false);
 const creatingItem = ref(false);
 const editingItem = ref(null);
@@ -647,6 +677,37 @@ async function loadCollections() {
 		collections.value = (await callServer("frappin.api.clipboard.get_collections", {})) || [];
 	} catch (error) {
 		console.warn("Frappin could not load collections.", error);
+	}
+}
+
+function openCollectionCreate() {
+	addingCollection.value = true;
+	nextTick(() => collectionInput.value?.focus());
+}
+
+function closeCollectionCreate() {
+	if (savingCollection.value) return;
+	addingCollection.value = false;
+	newCollectionTitle.value = "";
+}
+
+async function createCollection() {
+	const title = newCollectionTitle.value.trim();
+	if (!title || savingCollection.value) return;
+	savingCollection.value = true;
+	try {
+		const collection = await callServer("frappin.api.clipboard.create_collection", { title });
+		await loadCollections();
+		addingCollection.value = false;
+		newCollectionTitle.value = "";
+		if (collection?.name) {
+			activeFilter.value = `collection:${collection.name}`;
+			await loadItems(true);
+		}
+	} catch (error) {
+		console.warn("Frappin could not create this collection.", error);
+	} finally {
+		savingCollection.value = false;
 	}
 }
 
